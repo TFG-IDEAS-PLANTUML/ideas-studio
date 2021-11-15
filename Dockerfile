@@ -5,10 +5,10 @@ FROM tomcat:9.0.16-jre8
 # Create keystore
 RUN /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/keytool -genkey -alias tomcat -keyalg RSA -storepass changeit -dname "cn=Mark Jones, ou=JavaSoft, o=Sun, c=US" -keypass changeit -keystore /usr/local/tomcat/.keystore
 
-# Add start script
+# Add start script X
 ADD ./tomcat-config/start.sh ./
 
-# Add ideas config
+# Add ideas config X
 ADD ./designer-config/studio-configuration.json ./
 
 # Add war to webapps

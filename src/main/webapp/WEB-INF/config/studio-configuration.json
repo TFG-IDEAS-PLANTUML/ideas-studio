@@ -6,7 +6,7 @@
   },
   "modules": {
     "sedl-language": "https://exemplar.us.es/ideas-sedl-language",
-    "ideas-plaintext-language": "https://plaintext.modules.ideas.services.governify.io/ideas-plaintext-language",
+    "ideas-plaintext-language": "http://localhost:8081/ideas-plaintext-language",
     "ideas-csv-language": "https://csv.modules.ideas.services.governify.io",
     "R-language": "https://r.modules.ideas.services.governify.io",
     "ideas-html-language": "https://html.modules.designer.governify.io/ideas-html-language",
