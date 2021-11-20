@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   studio:
-    image: "docker4ideas/ideas-studio"
+    build: .
     ports:
     - "8080:8080"
 
