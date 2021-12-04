@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   studio:
-    build: .
+    image: docker4ideas/ideas-studio
     ports:
     - "8080:8080"
 
@@ -9,6 +9,6 @@ services:
     image: "docker4ideas/ideas-plaintext-module"
 
   nginx:
-    image: ideas_nginx
+    image: docker4ideas/ideas_nginx
     ports:
       - "8081:8081"
