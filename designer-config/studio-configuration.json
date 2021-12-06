@@ -28,6 +28,8 @@
         "yaml"
     ],
     "modules": {
-        "ideas-plaintext-language": "http://plaintext:8080/ideas-plaintext-language"
+        "ideas-plaintext-language": "http://localhost:8081/ideas-plaintext-language",
+        "ideas-latex-language": "http://localhost:8081/ideas-latex-language"
+        
     }
 }

@@ -14,7 +14,7 @@
     "ideas-yaml-language": "https://yaml.modules.ideas.services.governify.io/ideas-yaml-language",
     "ideas-language-angular": "https://angular.modules.ideas.services.governify.io/ideas-language-angular",
     "ideas-language-angular-controller": "https://angular-controller.modules.ideas.services.governify.io/ideas-language-angular-controller",
-    "ideas-latex-language": "/ideas-latex-language"
+    "ideas-latex-language": "http://localhost:8081/ideas-latex-language"
   },
   "configurationFiles": {
     "application": "classpath*:application.properties",
