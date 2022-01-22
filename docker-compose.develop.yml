@@ -1,0 +1,15 @@
+version: "3.8"
+services: 
+  nginx:
+    image: docker4ideas/ideas_nginx
+    ports:
+      - "8081:8081"
+
+  develop:
+    image: openjdk:18-jdk-alpine3.15
+    # image: maven:3.8.4-openjdk-17-slim
+    command: ["java", "-jar", "-Dspring.profiles.active=test", "/target/ROOT-0.9.5.war"]
+    volumes:
+      - ./target/:/target/
+    ports:
+      - "8080:8080"
