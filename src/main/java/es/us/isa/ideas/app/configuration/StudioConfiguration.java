@@ -24,7 +24,6 @@ public class StudioConfiguration implements Serializable {
 
     private String workbenchName;
 
-    private Map<String, String> modules;
     private Map<String, String> images;
     private Map<String, String> configurationFiles;
     private String helpURI;
@@ -33,6 +32,8 @@ public class StudioConfiguration implements Serializable {
     private Boolean advancedMode;
     private List<String> extensionsFilter;
     private List<String> extensionsPreferences;
+    private String nginx;
+    private List<String> modules;
 
     public StudioConfiguration() {
         super();
@@ -52,15 +53,23 @@ public class StudioConfiguration implements Serializable {
         return config;
     }
 
-    public Map<String, String> getModules() {
+    public List<String> getModules() {
         return modules;
     }
 
-    public void setModules(Map<String, String> modules) {
+    public void setModules(List<String> modules) {
         this.modules = modules;
     }
 
-    public Map<String, String> getImages() {
+    public String getNginx() {
+		return nginx;
+	}
+
+	public void setNginx(String nginx) {
+		this.nginx = nginx;
+	}
+
+	public Map<String, String> getImages() {
         return images;
     }
 

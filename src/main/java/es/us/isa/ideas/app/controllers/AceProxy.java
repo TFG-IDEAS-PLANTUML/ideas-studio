@@ -178,9 +178,10 @@ public class AceProxy extends AbstractController {
             LOGGER.log(Level.INFO, "Getting from cache for '" + fileName + "' (uri=" + modeUriCache.get(fileName) + ")");
             return requestContent(modeUriCache.get(fileName));
         } else {
-
-            for (String moduleEndpoint : studioConfiguration.getModules().values()) {
-                String languageModuleUri = moduleEndpoint;
+        	
+        	String base_uri = studioConfiguration.getNginx();
+            for (String moduleEndpoint : studioConfiguration.getModules()) {
+                String languageModuleUri = base_uri + moduleEndpoint;
                 if(moduleEndpoint.startsWith("/"))
                     languageModuleUri=request.getRequestURL().toString().replace(request.getRequestURI(), "")+moduleEndpoint;
                 String languageString = requestContent(languageModuleUri + DEPRECATED_MANIFEST_ENDPOINT);

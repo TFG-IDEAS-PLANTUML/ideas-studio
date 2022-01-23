@@ -10,7 +10,9 @@ var EXEC_OP_URI = "/models/$modelId/operations/$operationId";
 
 var setupModels = function (configuration) {
     for (var moduleId in configuration.modules) {
-        var uri = configuration.modules[moduleId];
+		var base_uri = configuration.nginx;
+        var module = configuration.modules[moduleId];
+		var uri = base_uri + "/" + module;
         ModeManager.idUriMap[moduleId] = uri;
         console.log("Setting up model: " + moduleId + " (" + configuration.modules[moduleId] + ")");
         configureModel(uri);

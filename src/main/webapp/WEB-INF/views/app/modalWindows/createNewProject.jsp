@@ -21,7 +21,7 @@
             <select id="template-from-module" name="template-from-module" class="form-control">
                 <option id="module-empty" value=""><spring:message code="editor.actions.modal.create_project.choose_a_template" /></option>
                 <jstl:forEach var="language" items="${studioConfiguration.modules}">
-                    <optgroup label="${language.key}" id="${language.key}-optgroup">
+                    <optgroup label="${language}" id="${language}-optgroup">
                     </optgroup>
                 </jstl:forEach>
             </select>
@@ -42,18 +42,21 @@
         var mytemplates, mytemplate, index;
         $("#template-selection").hide(); //enable it when project templates become active
         <jstl:forEach var="language" items="${studioConfiguration.modules}">
-    $.ajax({"url": '${language.value}/template/project',
+
+        <jstl:set var = "uri" value = "${studioConfiguration.nginx}/${language}"/>
+        
+    $.ajax({"url": '${uri}/template/project',
             success: function (result, textStatus, request) {
-            console.log("Templates provided by the ${language.key} module:" + result + "");
+            console.log("Templates provided by the ${language} module:" + result + "");
                 mytemplates = $.parseJSON(result);
                 if (mytemplates !== null && mytemplates.length != 0) {
                     for (index = 0; index < mytemplates.length; index++) {
                         mytemplate = mytemplates[index];
-                    $("#${language.key}-optgroup").append('<option value="' + mytemplate.name + '">' + mytemplate.name + '</option>');
+                    $("#${language}-optgroup").append('<option value="' + mytemplate.name + '">' + mytemplate.name + '</option>');
                     }
                 } else {
-                    console.log("------" + "${language.key}");
-                $("#${language.key}-optgroup").remove();
+                    console.log("------" + "${language}");
+                $("#${language}-optgroup").remove();
                 }
             },
             error: function (result, textStatus, request) {

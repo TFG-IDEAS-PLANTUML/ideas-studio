@@ -1,41 +1,35 @@
 {
-  "workbenchName": "DESIGNER",
-  "images": {
-    "logo": "designer/appLogoBig.png",
-    "search": "exemplar/ExperimentsSearch.png"
-  },
-  "modules": {
-    "sedl-language": "https://exemplar.us.es/ideas-sedl-language",
-    "ideas-plaintext-language": "http://localhost:8081/ideas-plaintext-language",
-    "ideas-csv-language": "https://csv.modules.ideas.services.governify.io",
-    "R-language": "https://r.modules.ideas.services.governify.io",
-    "ideas-html-language": "https://html.modules.designer.governify.io/ideas-html-language",
-    "ideas-json-language": "https://json.modules.ideas.services.governify.io/ideas-json-language",
-    "ideas-yaml-language": "https://yaml.modules.ideas.services.governify.io/ideas-yaml-language",
-    "ideas-language-angular": "https://angular.modules.ideas.services.governify.io/ideas-language-angular",
-    "ideas-language-angular-controller": "https://angular-controller.modules.ideas.services.governify.io/ideas-language-angular-controller",
-    "ideas-latex-language": "/ideas-latex-language"
-  },
-  "configurationFiles": {
-    "application": "classpath*:application.properties",
-    "security": "classpath*:security.properties",
-    "social": "classpath*:social-exemplar.properties",
-    "email": "classpath*:email-exemplar.properties"
-  },
-  "helpURI": "exemplar.html",
-  "helpMode": "dynamic",
-  "advancedMode": true,
-  "extensionsFilter": [
-    "ang",
-    "ctl",
-    "html"
-  ],
-  "extensionsPreferences": [
-    "ag",
-    "at",
-    "oai-spec",
-    "json",
-    "yaml"
-  ],
-  "googleAnalyticsID": "UA-56725341-1"
+    "images": {
+        "logo": "designer/appLogoBig.png",
+        "search": "designer/Search.png"
+    },
+    "configurationFiles": {
+        "application": "classpath*:application.properties",
+        "security": "classpath*:security.properties",
+        "social": "classpath*:social.properties",
+        "email": "classpath*:email.properties"
+    },
+    "workbenchName": "DESIGNER",
+    "helpURI": "https://designer.governify.io/IDEAS-help/",
+    "helpMode": "none",
+    "googleAnalyticsID": "UA-68297022-1",
+    "advancedMode": true,
+    "extensionsFilter": [
+        "ang",
+        "ctl",
+        "html",
+        "cfg"
+    ],
+    "extensionsPreferences": [
+        "ag",
+        "at",
+        "oai-at",
+        "json",
+        "yaml"
+    ],
+    "nginx": "http://localhost:8081",
+    "modules": [
+        "ideas-plaintext-language"
+    ]
+
 }

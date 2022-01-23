@@ -8,9 +8,6 @@ RUN /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/keytool -genkey -alias tomcat -key
 # Add start script X
 ADD ./tomcat-config/start.sh ./
 
-# Add ideas config X
-ADD ./designer-config/studio-configuration.json ./
-
 # Add war to webapps
 ADD target/ROOT*.war ./webapps/ROOT.war
 
@@ -21,4 +18,4 @@ RUN mv  ./webapps/ROOT ./webapps/managerui
 
 EXPOSE 80 443
 
-CMD  ./bin/catalina.sh run & sleep 40s && cp ./studio-configuration.json ./webapps/ROOT/WEB-INF/config/ && bash ./start.sh
+CMD  ./bin/catalina.sh run & sleep 40s && bash ./start.sh

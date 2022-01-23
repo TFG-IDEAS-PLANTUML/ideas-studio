@@ -27,7 +27,9 @@
         "json",
         "yaml"
     ],
-    "modules": {
-        "ideas-plaintext-language": "http://plaintext:8080/ideas-plaintext-language"
-    }
+    "nginx": "http://localhost:8081",
+    "modules": [
+        "ideas-plaintext-language"
+    ]
+
 }
