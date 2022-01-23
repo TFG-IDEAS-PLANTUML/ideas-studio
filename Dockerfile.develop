@@ -1,0 +1,9 @@
+FROM maven:3.8.4-openjdk-17-slim
+
+
+# COPY * /app/
+# RUN cd /app
+# RUN mvn package
+
+# CMD ["java", "-jar", "-Dspring.profiles.active=test", "/app/target/gs-spring-boot-docker-0.1.0.jar"]
+CMD cd /ideas-repo && mvn package && cd /app/ && mvn package && tail -f /dev/null
