@@ -207,6 +207,8 @@
             <groupId>es.us.isa</groupId>
             <artifactId>ideas-repo</artifactId>
             <version>${ideas.repo.version}</version>
+            <scope>system</scope>
+            <systemPath>/usr/jars/ideas-repo-0.8-SNAPSHOT.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>org.objenesis</groupId>
@@ -227,12 +229,26 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>11.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.1</version>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+					<mainClass>es.us.isa.ideas.app.IdeasStudioApplication</mainClass>
+				</configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
