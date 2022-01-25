@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   maven_install:
-    image: maven:3.8.4-openjdk-8-slim
+    image: maven:3.8.4-openjdk-11-slim
     command: ['tail', '-f', '/dev/null']
     volumes: 
       - ../jars:/usr/jars

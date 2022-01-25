@@ -29,6 +29,7 @@
         <netbeans.hint.deploy.server>Tomcat</netbeans.hint.deploy.server>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <start-class>es.us.isa.ideas.app.IdeasStudioApplication</start-class>
     </properties>
     <dependencyManagement>
         <dependencies>
