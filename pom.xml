@@ -206,9 +206,9 @@
         <dependency>
             <groupId>es.us.isa</groupId>
             <artifactId>ideas-repo</artifactId>
-            <version>${ideas.repo.version}</version>
-            <scope>system</scope>
-            <systemPath>/usr/jars/ideas-repo-0.8-SNAPSHOT.jar</systemPath>
+            <version>0.7</version>
+            <!--<scope>system</scope>
+            <systemPath>/usr/jars/ideas-repo-0.8-SNAPSHOT.jar</systemPath>-->
         </dependency>
         <dependency>
             <groupId>org.objenesis</groupId>
