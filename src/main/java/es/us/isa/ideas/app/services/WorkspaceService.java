@@ -159,14 +159,14 @@ public class WorkspaceService extends BusinessService<Workspace> {
     }
 
     public void save(Workspace workspace) {
-        Assert.notNull(workspace);
+        Assert.notNull(workspace, "");
         workspaceRepository.save(workspace);
     }
     
     public void saveOrUpdate(String workspaceJSON) {
 
         boolean success = true;
-        Assert.notNull(workspaceJSON);
+        Assert.notNull(workspaceJSON, "");
 
         Workspace ws = new Workspace();
         ObjectMapper mapper = new ObjectMapper();
@@ -239,8 +239,8 @@ public class WorkspaceService extends BusinessService<Workspace> {
     }
     
     public void delete(String workspaceName, String username){
-        Assert.notNull(workspaceName);
-        Assert.notNull(username);
+        Assert.notNull(workspaceName, "");
+        Assert.notNull(username, "");
         
         deleteReferences(workspaceName,username);
         
@@ -250,8 +250,8 @@ public class WorkspaceService extends BusinessService<Workspace> {
     }
     
     public void createWorkspace(String workspaceName, String username, String origin){
-        Assert.notNull(workspaceName);
-        Assert.notNull(username);
+        Assert.notNull(workspaceName, "The class must not be null");
+        Assert.notNull(username, "");
         if(checkNameAvailability(workspaceName,username)){
             Workspace ws = new Workspace();
             ws.setDownloads(0);
@@ -280,8 +280,8 @@ public class WorkspaceService extends BusinessService<Workspace> {
 
     public void updateLaunches(String workspaceName, String username) {
         
-        Assert.notNull(workspaceName);
-        Assert.notNull(username);
+        Assert.notNull(workspaceName, "");
+        Assert.notNull(username, "");
         
         Workspace ws = workspaceRepository.findByName(workspaceName, username);
         
@@ -297,8 +297,8 @@ public class WorkspaceService extends BusinessService<Workspace> {
     
     public void updateDemo(String demoWorkspaceName, String username) {
         
-        Assert.notNull(demoWorkspaceName);
-        Assert.notNull(username);
+        Assert.notNull(demoWorkspaceName, "");
+        Assert.notNull(username, "");
         
         Workspace demoWS = workspaceRepository.findByName(demoWorkspaceName, DEMO_MASTER);
         Workspace originWS = demoWS.getOrigin();      
@@ -313,8 +313,8 @@ public class WorkspaceService extends BusinessService<Workspace> {
     }
     
     public void createWorkspaceWithTags(String workspaceName, String description, String username, String origin, String tags){
-        Assert.notNull(workspaceName);
-        Assert.notNull(username);
+        Assert.notNull(workspaceName, "");
+        Assert.notNull(username, "");
         if(checkNameAvailability(workspaceName,username)){
             Workspace ws = new Workspace();
             ws.setDownloads(0);
@@ -350,8 +350,8 @@ public class WorkspaceService extends BusinessService<Workspace> {
     
     public void deleteReferences(String workspaceName, String username) {
         
-        Assert.notNull(workspaceName);
-        Assert.notNull(username);        
+        Assert.notNull(workspaceName, "");
+        Assert.notNull(username, "");        
        
         Collection<Workspace> demos = findByDemoPrincipal();
         

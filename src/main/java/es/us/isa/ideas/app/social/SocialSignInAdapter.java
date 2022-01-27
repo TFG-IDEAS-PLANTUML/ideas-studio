@@ -2,14 +2,10 @@ package es.us.isa.ideas.app.social;
 
 import es.us.isa.ideas.app.security.UserAccount;
 import es.us.isa.ideas.app.security.UserAccountService;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.web.WebAttributes;
-import org.springframework.security.web.savedrequest.RequestCache;
-import org.springframework.security.web.savedrequest.SavedRequest;
 import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.ConnectionRepository;
 import org.springframework.social.connect.web.SignInAdapter;
