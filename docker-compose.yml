@@ -1,14 +1,22 @@
 version: "3.3"
 services:
-  studio:
-    image: docker4ideas/ideas-studio:1.1
-    ports:
-    - "8080:8080"
-
-  ideas-plaintext-language:
-    image: "docker4ideas/ideas-plaintext-module"
-
   nginx:
     image: docker4ideas/ideas_nginx
     ports:
       - "8081:8081"
+  ideas_studio_develop:
+    image: maven:3.8.4-openjdk-11-slim
+    command: ['tail', '-f', '/dev/null']
+    ports:
+      - "8080:8080"
+    volumes: 
+      - .:/ideas-studio
+      - ../ideas-repo:/ideas-repo
+      
+  ideas-plaintext-language:
+    image: maven:3.8.4-openjdk-11-slim
+    command: ['tail', '-f', '/dev/null']
+    # command: ['cd', '/ideas-plaintext-module', '&&', 'mvn', 'spring-boot:run']
+    volumes:
+      - ../ideas-plaintext-module:/ideas-plaintext-module
+      - ../ideas-base-module:/ideas-base-module
