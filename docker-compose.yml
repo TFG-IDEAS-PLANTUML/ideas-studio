@@ -1,4 +1,4 @@
-version: "3.3"
+version: "3.5"
 services:
   nginx:
     image: docker4ideas/ideas_nginx
@@ -6,17 +6,22 @@ services:
       - "8081:8081"
   ideas_studio_develop:
     image: maven:3.8.4-openjdk-11-slim
-    command: ['tail', '-f', '/dev/null']
+    command: bash -c "cd /ideas-repo && mvn install && tail -f /dev/null"
     ports:
       - "8080:8080"
     volumes: 
       - .:/ideas-studio
       - ../ideas-repo:/ideas-repo
       
-  ideas-plaintext-language:
+  modules:
     image: maven:3.8.4-openjdk-11-slim
-    command: ['tail', '-f', '/dev/null']
-    # command: ['cd', '/ideas-plaintext-module', '&&', 'mvn', 'spring-boot:run']
+    command: bash -c "cd /ideas-base-module && mvn install && tail -f /dev/null"
     volumes:
       - ../ideas-plaintext-module:/ideas-plaintext-module
       - ../ideas-base-module:/ideas-base-module
+  
+  ideas-plaintext-language:
+    image: tomcat:9.0.16-jre8
+    command: bash -c "cp /target/ideas-plaintext-language-0.7.war /usr/local/tomcat/webapps/ && /usr/local/tomcat/bin/catalina.sh run"
+    volumes:
+      - ../ideas-plaintext-module/target:/target
