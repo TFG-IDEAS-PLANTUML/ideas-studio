@@ -18,6 +18,7 @@ services:
     command: bash -c "cd /ideas-base-module && mvn install && tail -f /dev/null"
     volumes:
       - ../ideas-plaintext-module:/ideas-plaintext-module
+      - ../ideas-latex-module:/ideas-latex-module
       - ../ideas-base-module:/ideas-base-module
   
   ideas-plaintext-language:
