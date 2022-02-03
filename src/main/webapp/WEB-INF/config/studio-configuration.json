@@ -29,7 +29,8 @@
     ],
     "nginx": "http://localhost:8081",
     "modules": [
-        "ideas-plaintext-language"
+        "ideas-plaintext-language",
+        "ideas-latex-language"
     ]
 
 }
