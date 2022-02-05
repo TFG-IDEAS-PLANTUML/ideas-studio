@@ -15,14 +15,16 @@ services:
     volumes: 
       - .:/ideas/studio
       - ../ideas-repo:/ideas/repo
+      - /tmp:/tmp
   
   ideas-latex-language:
     image: docker4ideas/latex-module
-    command: bash -c "cd /ideas/base-module && mvn install && tail -f /dev/null"
+    # command: bash -c "cd /ideas/base-module && mvn install && tail -f /dev/null"
+    command: bash -c "cd /ideas/base-module && mvn install && cd /ideas/latex-module && mvn spring-boot:run"
     volumes:
       - ../ideas-latex-module:/ideas/latex-module
       - ../ideas-base-module:/ideas/base-module
-      - .:/ideas/studio
+      - /tmp:/tmp
   
   ideas-plaintext-language:
     image: tomcat:9.0.16-jre8

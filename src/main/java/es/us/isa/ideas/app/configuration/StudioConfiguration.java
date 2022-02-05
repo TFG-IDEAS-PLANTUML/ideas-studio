@@ -10,8 +10,6 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.apache.commons.io.FileUtils;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
 
 public class StudioConfiguration implements Serializable {
 
@@ -32,7 +30,8 @@ public class StudioConfiguration implements Serializable {
     private Boolean advancedMode;
     private List<String> extensionsFilter;
     private List<String> extensionsPreferences;
-    private String nginx;
+    private String proxyUri;
+    private String dockerProxyUri;
     private List<String> modules;
 
     public StudioConfiguration() {
@@ -61,12 +60,20 @@ public class StudioConfiguration implements Serializable {
         this.modules = modules;
     }
 
-    public String getNginx() {
-		return nginx;
+    public String getProxyUri() {
+		return proxyUri;
 	}
 
-	public void setNginx(String nginx) {
-		this.nginx = nginx;
+	public void setProxyUri(String proxyUri) {
+		this.proxyUri = proxyUri;
+	}
+
+    public String getDockerProxyUri() {
+		return dockerProxyUri;
+	}
+
+	public void setDockerProxyUri(String dockerProxyUri) {
+		this.dockerProxyUri = dockerProxyUri;
 	}
 
 	public Map<String, String> getImages() {

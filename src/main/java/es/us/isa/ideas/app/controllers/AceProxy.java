@@ -5,7 +5,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.StringWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.KeyManagementException;
@@ -23,11 +22,9 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,15 +33,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import es.us.isa.ideas.app.configuration.StudioConfiguration;
-import java.io.File;
-import java.io.FileInputStream;
-import java.util.Properties;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.InputStreamResource;
-import org.springframework.util.ResourceUtils;
 
 @Controller
 @RequestMapping("/js")
@@ -183,9 +175,9 @@ public class AceProxy extends AbstractController {
             return requestContent(modeUriCache.get(fileName));
         } else {
 
-            String base_uri = studioConfiguration.getNginx();
+            String base_uri = studioConfiguration.getDockerProxyUri();
             for (String moduleEndpoint : studioConfiguration.getModules()) {
-                String languageModuleUri = base_uri + moduleEndpoint;
+                String languageModuleUri = base_uri + "/" + moduleEndpoint;
                 if(moduleEndpoint.startsWith("/"))
                     languageModuleUri=request.getRequestURL().toString().replace(request.getRequestURI(), "")+moduleEndpoint;
                 String languageString = requestContent(languageModuleUri + DEPRECATED_MANIFEST_ENDPOINT);

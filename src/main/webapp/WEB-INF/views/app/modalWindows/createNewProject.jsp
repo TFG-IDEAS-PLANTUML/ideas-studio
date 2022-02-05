@@ -43,7 +43,7 @@
         $("#template-selection").hide(); //enable it when project templates become active
         <jstl:forEach var="language" items="${studioConfiguration.modules}">
 
-        <jstl:set var = "uri" value = "${studioConfiguration.nginx}/${language}"/>
+        <jstl:set var = "uri" value = "${studioConfiguration.proxyUri}/${language}"/>
         
     $.ajax({"url": '${uri}/template/project',
             success: function (result, textStatus, request) {

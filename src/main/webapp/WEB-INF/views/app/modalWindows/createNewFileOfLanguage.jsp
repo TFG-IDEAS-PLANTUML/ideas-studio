@@ -31,7 +31,7 @@
         console.dir(language);
         if (language.defaultFileName)
             $("#filename").val(language.defaultFileName);
-        $.ajax({"url": '${studioConfiguration.nginx}/${languageId}/template/document',
+        $.ajax({"url": '${studioConfiguration.proxyUri}/${languageId}/template/document',
             success: function (result, textStatus, request) {
                 console.log("Templates provided by the ${languageId} module:" + result + "");
                 if (typeof result === 'string' || result instanceof String)
