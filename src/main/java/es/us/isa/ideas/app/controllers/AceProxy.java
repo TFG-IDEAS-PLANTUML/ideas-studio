@@ -67,7 +67,7 @@ public class AceProxy extends AbstractController {
 
     private final Map<String, String> modeUriCache = new HashMap<>();
 
-    @RequestMapping(value = "/ace/{file}", method = RequestMethod.GET)
+    @RequestMapping(value = "/ace/{file}", method = RequestMethod.GET,produces = "text/javascript")
     @ResponseBody
     public String getAceproxyContent(@PathVariable String file,HttpServletRequest request, HttpServletResponse response) {
 
@@ -115,7 +115,8 @@ public class AceProxy extends AbstractController {
 
         try {
             URL url = new URL(stringUrl);
-
+            InputStream is=null;
+            if(stringUrl.startsWith("https")){
             // Workaround for SSL problem doing the module servlets requests
             TrustManager[] trustAllCerts = new TrustManager[]{new X509TrustManager() {
                 @Override
@@ -147,8 +148,11 @@ public class AceProxy extends AbstractController {
                 }
             });
             LOGGER.log(Level.INFO, "Getting content from: " + url);
+            is=conn.getInputStream();
+            }else
+                is=url.openStream();
 
-            try (BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()))) {
+            try (BufferedReader in = new BufferedReader(new InputStreamReader(is))) {
                 String inputLine;
                 while ((inputLine = in.readLine()) != null) {
                     result += inputLine + System.getProperty("line.separator");
@@ -195,7 +199,8 @@ public class AceProxy extends AbstractController {
                         json = new JSONObject(languageString);
                         Double version = 1.0;
                         try {
-                            version = json.getDouble("apiVersion");
+                            if(json.has("apiVersion"))
+                                version = json.getDouble("apiVersion");                            
                             if (version >= 2.0) {
                                 JSONArray languages = json.getJSONArray("models");
                                 for (int i = 0; i < languages.length(); i++) {
@@ -259,7 +264,7 @@ public class AceProxy extends AbstractController {
             } else if (!syntax.isNull("_editorModeURI")) {
                 String editorModeURI = syntax.getString("_editorModeURI");
 
-                if (fileName.startsWith(MODE_PREFIX) && editorModeURI != null && editorModeURI.equals(fileName + JS_EXT)) {
+                if (fileName.startsWith(MODE_PREFIX) && editorModeURI != null && editorModeURI.equals(fileName + (fileName.endsWith(JS_EXT)?"":JS_EXT))) {
                     String uri = "";
                     uri = languageModuleUri + DEPRECATED_MANIFEST_ENDPOINT + DEPRECATED_FORMAT_ENDPOINT + "/" + syntaxId + "/mode";
 
@@ -295,7 +300,7 @@ public class AceProxy extends AbstractController {
                 if (fileName.startsWith(THEME_PREFIX)) {
                     LOGGER.log(Level.INFO, "Is {0} equal to {1}" + JS_EXT + "?", new Object[]{editorThemeURI, fileName});
                     if (editorThemeURI != null
-                            && editorThemeURI.equals(fileName + JS_EXT)) {
+                            && editorThemeURI.equals(fileName + (fileName.endsWith(JS_EXT)?"":JS_EXT))) {
                         String uri = "";
                         uri = languageModuleUri + DEPRECATED_MANIFEST_ENDPOINT + DEPRECATED_FORMAT_ENDPOINT + "/" + syntaxId + "/theme";
 
