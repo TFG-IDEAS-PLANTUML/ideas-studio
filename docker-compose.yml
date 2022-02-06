@@ -7,23 +7,21 @@ services:
       - "8081:8081"
 
   ideas-studio-develop:
-    image: maven:3.8.4-openjdk-11-slim
-    # command: bash -c "cd /ideas/repo && mvn install && tail -f /dev/null"
-    command: bash -c "cd /ideas/repo && mvn install && cd /ideas/studio && mvn spring-boot:run"
+    image: docker4ideas/ideas-studio:develop
+    command: bash -c "tail -f /dev/null"
+    # command: bash -c "cd /ideas/studio && mvn spring-boot:run"
     ports:
       - "8080:8080"
     volumes: 
       - .:/ideas/studio
-      - ../ideas-repo:/ideas/repo
-      - /tmp:/tmp
+      - /tmp:/tmp # Necesario para el módulo de latex
   
   ideas-latex-language:
-    image: docker4ideas/latex-module
-    # command: bash -c "cd /ideas/base-module && mvn install && tail -f /dev/null"
-    command: bash -c "cd /ideas/base-module && mvn install && cd /ideas/latex-module && mvn spring-boot:run"
+    image: docker4ideas/latex-module:develop
+    command: bash -c "tail -f /dev/null"
+    # command: bash -c "cd /ideas/latex-module && mvn spring-boot:run"
     volumes:
       - ../ideas-latex-module:/ideas/latex-module
-      - ../ideas-base-module:/ideas/base-module
       - /tmp:/tmp
   
   ideas-plaintext-language:
