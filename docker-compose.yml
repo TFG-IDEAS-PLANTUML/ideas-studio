@@ -8,24 +8,27 @@ services:
 
   ideas-studio-develop:
     image: docker4ideas/ideas-studio:develop
-    command: bash -c "tail -f /dev/null"
-    # command: bash -c "cd /ideas/studio && mvn spring-boot:run"
+    # command: bash -c "tail -f /dev/null"
+    command: bash -c "cd /ideas/studio && mvn spring-boot:run"
     ports:
       - "8080:8080"
     volumes: 
       - .:/ideas/studio
-      - /tmp:/tmp # Necesario para el módulo de latex
+      - temporal-data:/tmp # Necesario para el módulo de latex
   
   ideas-latex-language:
     image: docker4ideas/latex-module:develop
-    command: bash -c "tail -f /dev/null"
-    # command: bash -c "cd /ideas/latex-module && mvn spring-boot:run"
+    # command: bash -c "tail -f /dev/null"
+    command: bash -c "cd /ideas/latex-module && mvn spring-boot:run"
     volumes:
       - ../ideas-latex-module:/ideas/latex-module
-      - /tmp:/tmp
+      - temporal-data:/tmp
   
   ideas-plaintext-language:
     image: tomcat:9.0.16-jre8
     command: bash -c "cp /target/ideas-plaintext-language-0.7.war /usr/local/tomcat/webapps/ideas-plaintext-language.war && /usr/local/tomcat/bin/catalina.sh run"
     volumes:
       - ../ideas-plaintext-module/target:/target
+
+volumes:
+  temporal-data:

@@ -1,12 +1,12 @@
 version: "3.3"
 services:
   studio:
-    image: docker4ideas/ideas-studio:1.1
+    image: docker4ideas/ideas-studio
     ports:
     - "8080:8080"
 
   ideas-plaintext-language:
-    image: "docker4ideas/ideas-plaintext-module"
+    image: docker4ideas/ideas-plaintext-module
 
   nginx:
     image: docker4ideas/ideas_nginx
