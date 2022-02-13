@@ -8,24 +8,42 @@ services:
 
   ideas-studio-develop:
     image: docker4ideas/ideas-studio:develop
-    command: bash -c "tail -f /dev/null"
-    # command: bash -c "cd /ideas/studio && mvn spring-boot:run"
+    #command: bash -c "tail -f /dev/null"
+    command: bash -c "cd /ideas/studio && mvn spring-boot:run"
     ports:
       - "8080:8080"
     volumes: 
       - .:/ideas/studio
       - /tmp:/tmp # Necesario para el módulo de latex
   
-  ideas-latex-language:
-    image: docker4ideas/latex-module:develop
-    command: bash -c "tail -f /dev/null"
-    # command: bash -c "cd /ideas/latex-module && mvn spring-boot:run"
+#  ideas-latex-language:
+#    image: docker4ideas/latex-module:develop
+#    command: bash -c "tail -f /dev/null"
+#    # command: bash -c "cd /ideas/latex-module && mvn spring-boot:run"
+#    volumes:
+#      - ../ideas-latex-module:/ideas/latex-module
+#      - /tmp:/tmp
+
+
+  #ideas-plaintext-language:
+  #  image: docker4ideas/module:develop
+  #  command: bash -c "tail -f /dev/null"
+  #  # command: bash -c "cd /ideas/plaintext-module && mvn spring-boot:run"
+  #  volumes:
+  #    - ../ideas-plaintext-module:/ideas/plaintext-module
+
+  #ideas-dockercompose-language:
+  #  image: docker4ideas/module:develop
+  #  command: bash -c "tail -f /dev/null"
+  #  # command: bash -c "cd /ideas/dockercompose-module && mvn spring-boot:run"
+  #  volumes:
+  #    - ../ideas-dockercompose-module:/ideas/dockercompose-module
+
+
+  ideas-dockerfile-language:
+    image: module-docker
+    command: bash -c "cd /usr/local/bin && wrapdocker && tail -f /dev/null"
+    privileged: true
+    # command: bash -c "cd /ideas/dockerfile-module && mvn spring-boot:run"
     volumes:
-      - ../ideas-latex-module:/ideas/latex-module
-      - /tmp:/tmp
-  
-  ideas-plaintext-language:
-    image: tomcat:9.0.16-jre8
-    command: bash -c "cp /target/ideas-plaintext-language-0.7.war /usr/local/tomcat/webapps/ideas-plaintext-language.war && /usr/local/tomcat/bin/catalina.sh run"
-    volumes:
-      - ../ideas-plaintext-module/target:/target
+      - ../ideas-dockerfile-module:/ideas/dockerfile-module
