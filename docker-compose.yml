@@ -24,6 +24,13 @@ services:
       - ../ideas-latex-module:/ideas/latex-module
       - temporal-data:/tmp
   
+  ideas-dockerfile-language:
+    image: docker4ideas/module:develop
+    # command: bash -c "tail -f /dev/null"
+    command: bash -c "cd /ideas/dockerfile-module && mvn spring-boot:run"
+    volumes:
+      - ../ideas-dockerfile-module/:/ideas/dockerfile-module
+  
   ideas-plaintext-language:
     image: tomcat:9.0.16-jre8
     command: bash -c "cp /target/ideas-plaintext-language-0.7.war /usr/local/tomcat/webapps/ideas-plaintext-language.war && /usr/local/tomcat/bin/catalina.sh run"
