@@ -42,7 +42,7 @@ services:
 
   ideas-dockerfile-language:
     image: docker4ideas/module-docker:develop
-    command: bash -c "cd /usr/local/bin && wrapdocker && tail -f /dev/null"
+    command: bash -c "cd /usr/local/bin && dockerd"
     # command: bash -c "cd /ideas/dockerfile-module && mvn spring-boot:run"
     privileged: true
     volumes:
