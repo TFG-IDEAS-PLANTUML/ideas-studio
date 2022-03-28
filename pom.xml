@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="https://maven.apache.org/POM/4.0.0" 
-    xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -12,7 +13,7 @@
     <groupId>es.us.isa</groupId>
     <artifactId>ROOT</artifactId>
     <version>0.9.5</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>ideas-studio-boot</name>
     <description>The Integrated Development Environment for domain specic lAnguageS (IDEAS) is a web project developed in order to provide an IDE for formal modeling documents using language modules.</description>
     <properties>
@@ -26,7 +27,6 @@
         <selenium.version>2.53.0</selenium.version>
         <ideas.repo.version>0.8-SNAPSHOT</ideas.repo.version>
         <!-- IDE-specific properties -->
-        <netbeans.hint.deploy.server>Tomcat</netbeans.hint.deploy.server>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
@@ -41,6 +41,23 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/TFG-IDEAS-PLANTUML/ideas-repo/</url>
+        </repository>
+    </distributionManagement>
+
+    <repositories>
+        <repository>
+            <id>github</id>
+            <name>GitHub</name>
+            <url>https://maven.pkg.github.com/TFG-IDEAS-PLANTUML/ideas-repo/</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <!-- Spring Boot dependencies -->
         <dependency>
@@ -95,11 +112,7 @@
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat.embed</groupId>
-            <artifactId>tomcat-embed-jasper</artifactId>
-            <version>9.0.17</version>
-        </dependency>
+
         <dependency>
             <groupId>org.eclipse.jdt.core.compiler</groupId>
             <artifactId>ecj</artifactId>
@@ -246,7 +259,7 @@
     </build>
     <profiles>
         <profile>
-            <id>HSQLDB</id>
+            <id>local</id>
             <activation>
                 <activeByDefault>false</activeByDefault>
             </activation>
@@ -256,23 +269,15 @@
             </properties>
         </profile>
         <profile>
-            <id>MYSQLDB</id>
+            <id>prod</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
-            <properties>
-                <spring.datasource.platform>mysql</spring.datasource.platform>
-                <spring.datasource.url>jdbc:mysql://localhost:3306/ideas</spring.datasource.url>
-                <spring.datasource.username>root</spring.datasource.username>
-                <spring.datasource.password>1d345l4b54dm1n_root</spring.datasource.password>
-                <!-- spring.datasource.initialization-mode>always</spring.datasource.initialization-mode-->
-            </properties>
             <dependencies>
-                <!-- Soporte para MySQL -->
                 <dependency>
-                    <groupId>mysql</groupId>
-                    <artifactId>mysql-connector-java</artifactId>
-                    <scope>runtime</scope>
+                    <groupId>org.postgresql</groupId>
+                    <artifactId>postgresql</artifactId>
+                    <version>42.3.3</version>
                 </dependency>
             </dependencies>
         </profile>

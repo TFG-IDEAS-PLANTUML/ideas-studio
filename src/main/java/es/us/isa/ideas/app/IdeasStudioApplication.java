@@ -10,15 +10,11 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories("es.us.isa.ideas.app")
 @EntityScan("es.us.isa.ideas.app")
 @SpringBootApplication
-public class IdeasStudioApplication extends SpringBootServletInitializer {
+public class IdeasStudioApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(IdeasStudioApplication.class, args);
     }
 
-    /* The extends and this overrided method are needed for using the app with tomcat */
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-        return builder.sources(IdeasStudioApplication.class);
-    }
+
 }
