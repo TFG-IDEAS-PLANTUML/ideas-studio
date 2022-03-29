@@ -41,9 +41,9 @@ jobs:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
           HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
       - name: Add Heroku remote
-        run: heroku git:remote --app $HEROKU_APP_NAME
+        run: heroku git:remote --app $HEROKU_APP_NAME_IDEAS_STUDIO
         env:
-          HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
+          HEROKU_APP_NAME_IDEAS_STUDIO: ${{ secrets.HEROKU_APP_NAME_IDEAS_STUDIO }}
       - name: Push to Heroku
         run: |
           heroku config:set REPOSITORY_TOKEN=${REPOSITORY_TOKEN}
@@ -55,7 +55,7 @@ jobs:
           git push heroku HEAD:master
         env:
           REPOSITORY_TOKEN: ${{ secrets.REPOSITORY_TOKEN }}
-          HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
+          HEROKU_APP_NAME_IDEAS_STUDIO: ${{ secrets.HEROKU_APP_NAME_IDEAS_STUDIO }}
           DB_USER: ${{ secrets.DB_USER }}
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
           DB_URL: ${{ secrets.DB_URL }}
