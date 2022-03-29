@@ -55,7 +55,7 @@ jobs:
           heroku config:set DB_NAME=${DB_NAME}
           heroku config:set GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
           heroku config:set GOOGLE_SECRET_ID=${GOOGLE_SECRET_ID}
-          git push heroku HEAD:master
+          git push heroku HEAD:master --force
         env:
           REPOSITORY_TOKEN: ${{ secrets.REPOSITORY_TOKEN }}
           HEROKU_APP_NAME_IDEAS_STUDIO: ${{ secrets.HEROKU_APP_NAME_IDEAS_STUDIO }}
