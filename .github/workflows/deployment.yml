@@ -45,14 +45,14 @@ jobs:
         env:
           HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
       - name: Push to Heroku
-        run:
-          - heroku config:set REPOSITORY_TOKEN=${REPOSITORY_TOKEN}
-          - heroku config:set SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE}
-          - heroku config:set DB_USER=${DB_USER}
-          - heroku config:set DB_PASSWORD=${DB_PASSWORD}
-          - heroku config:set DB_URL=${DB_URL}
-          - heroku config:set DB_NAME=${DB_NAME}
-          - git push heroku HEAD:master
+        run: |
+          heroku config:set REPOSITORY_TOKEN=${REPOSITORY_TOKEN}
+          heroku config:set SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE}
+          heroku config:set DB_USER=${DB_USER}
+          heroku config:set DB_PASSWORD=${DB_PASSWORD}
+          heroku config:set DB_URL=${DB_URL}
+          heroku config:set DB_NAME=${DB_NAME}
+          git push heroku HEAD:master
         env:
           REPOSITORY_TOKEN: ${{ secrets.REPOSITORY_TOKEN }}
           HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
