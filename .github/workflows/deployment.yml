@@ -61,5 +61,5 @@ jobs:
           DB_URL: ${{ secrets.DB_URL }}
           DB_NAME: ${{ secrets.DB_NAME }}
           DB_DATABASE: ${{ secrets.DB_DATABASE }}
-          SPRING_PROFILES_ACTIVE: PROD
+          SPRING_PROFILES_ACTIVE: prod
 
