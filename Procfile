@@ -1,1 +1,0 @@
-web: java -Dserver.port=$PORT -jar target/ROOT-0.9.5.jar
