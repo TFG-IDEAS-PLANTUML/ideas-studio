@@ -52,6 +52,8 @@ jobs:
           heroku config:set DB_PASSWORD=${DB_PASSWORD}
           heroku config:set DB_URL=${DB_URL}
           heroku config:set DB_NAME=${DB_NAME}
+          heroku config:set GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
+          heroku config:set GOOGLE_SECRET_ID=${GOOGLE_SECRET_ID}
           git push heroku HEAD:master
         env:
           REPOSITORY_TOKEN: ${{ secrets.REPOSITORY_TOKEN }}
@@ -61,5 +63,7 @@ jobs:
           DB_URL: ${{ secrets.DB_URL }}
           DB_NAME: ${{ secrets.DB_NAME }}
           DB_DATABASE: ${{ secrets.DB_DATABASE }}
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_SECRET_ID: ${{ secrets.GOOGLE_SECRET_ID }}
           SPRING_PROFILES_ACTIVE: prod
 
