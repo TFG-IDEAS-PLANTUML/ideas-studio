@@ -5,38 +5,39 @@
  */
 package es.us.isa.ideas.app.configuration;
 
-import java.util.HashMap;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.support.ServletContextAttributeExporter;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import java.util.HashMap;
 
 /**
- *
  * @author japarejo
  */
 @Configuration
-public class StudioConfigurationInitializator {
+public class StudioConfigurationInitializator implements WebMvcConfigurer {
 
     @Autowired
     StudioConfiguration value;
-    
-    @Bean(name="studioConfiguration")
+
+    @Bean(name = "studioConfiguration")
     public StudioConfiguration load(@Value("#{servletContext.getRealPath('')}") String path) {
-        value=StudioConfiguration.load(path);
+        value = StudioConfiguration.load(path);
         return value;
     }
-    
+
     @Bean
-    public ServletContextAttributeExporter initializeGlobalStudioConfiguration(){
-        ServletContextAttributeExporter result=new ServletContextAttributeExporter();
-        result.setAttributes(new HashMap<String,Object>() {{
+    public ServletContextAttributeExporter initializeGlobalStudioConfiguration() {
+        ServletContextAttributeExporter result = new ServletContextAttributeExporter();
+        result.setAttributes(new HashMap<String, Object>() {{
             put("studioConfiguration", value);
         }});
-        
+
         return result;
     }
-		
+
 }

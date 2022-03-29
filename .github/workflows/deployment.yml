@@ -52,8 +52,7 @@ jobs:
           heroku config:set DB_PASSWORD=${DB_PASSWORD}
           heroku config:set DB_URL=${DB_URL}
           heroku config:set DB_NAME=${DB_NAME}
-          heroku plugins:install java
-          heroku war:deploy target/ROOT-0.9.5.war --app ${HEROKU_APP_NAME_IDEAS_STUDIO}
+          git push heroku HEAD:master
         env:
           REPOSITORY_TOKEN: ${{ secrets.REPOSITORY_TOKEN }}
           HEROKU_APP_NAME_IDEAS_STUDIO: ${{ secrets.HEROKU_APP_NAME_IDEAS_STUDIO }}
