@@ -21,20 +21,16 @@ import java.util.HashMap;
 @Configuration
 public class StudioConfigurationInitializator implements WebMvcConfigurer {
 
-    @Autowired
-    StudioConfiguration value;
-
     @Bean(name = "studioConfiguration")
     public StudioConfiguration load(@Value("#{servletContext.getRealPath('')}") String path) {
-        value = StudioConfiguration.load(path);
-        return value;
+        return StudioConfiguration.load(path);
     }
 
     @Bean
-    public ServletContextAttributeExporter initializeGlobalStudioConfiguration() {
+    public ServletContextAttributeExporter initializeGlobalStudioConfiguration(StudioConfiguration studioConfiguration) {
         ServletContextAttributeExporter result = new ServletContextAttributeExporter();
         result.setAttributes(new HashMap<String, Object>() {{
-            put("studioConfiguration", value);
+            put("studioConfiguration", studioConfiguration);
         }});
 
         return result;
