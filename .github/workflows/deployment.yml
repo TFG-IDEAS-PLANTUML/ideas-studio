@@ -55,6 +55,8 @@ jobs:
           heroku config:set DB_NAME=${DB_NAME}
           heroku config:set GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
           heroku config:set GOOGLE_SECRET_ID=${GOOGLE_SECRET_ID}
+          heroku config:set GOOGLE_RECAPTCHA_KEY_SITE=${GOOGLE_RECAPTCHA_KEY_SITE}
+          heroku config:set GOOGLE_RECAPTCHA_KEY_SECRET=${GOOGLE_RECAPTCHA_KEY_SECRET}
           git push heroku HEAD:master --force
         env:
           REPOSITORY_TOKEN: ${{ secrets.REPOSITORY_TOKEN }}
@@ -66,5 +68,7 @@ jobs:
           DB_DATABASE: ${{ secrets.DB_DATABASE }}
           GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
           GOOGLE_SECRET_ID: ${{ secrets.GOOGLE_SECRET_ID }}
+          GOOGLE_RECAPTCHA_KEY_SITE: ${{ secrets.GOOGLE_RECAPTCHA_KEY_SITE }}
+          GOOGLE_RECAPTCHA_KEY_SECRET: ${{ secrets.GOOGLE_RECAPTCHA_KEY_SECRET }}
           SPRING_PROFILES_ACTIVE: prod
 

@@ -67,12 +67,12 @@
                         <i class="fa fa-facebook"></i> Facebook 
                 </button> 
         </form>-->
-        <form id="tw_signin" action="signin/twitter" method="POST"
+        <!--<form id="tw_signin" action="signin/twitter" method="POST"
               class="form-horizontal">                                        
             <button type="submit" class="btn btn-social btn-xs btn-twitter">
                 <i class="fab fa-twitter"></i> Twitter
             </button>
-        </form>
+        </form>-->
         <form id="go_signin" action="signin/google" method="POST"
               class="form-inline">
             <input type="hidden" name="scope" value="https://www.googleapis.com/auth/userinfo.email">					

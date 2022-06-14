@@ -19,5 +19,5 @@
         <button type="submit" class="btn btn-social btn-twitter">
             <i class="fa fa-twitter"></i> Connect with Twitter                        
         </button>    
-    </p>    
+    </p>
 </form>

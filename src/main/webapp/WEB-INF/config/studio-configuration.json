@@ -15,7 +15,7 @@
     "ideas-language-angular": "https://angular.modules.ideas.services.governify.io/ideas-language-angular",
     "ideas-language-angular-controller": "https://angular-controller.modules.ideas.services.governify.io/ideas-language-angular-controller",
     "ideas-latex-language": "http://localhost:8083/ideas-latex-language",
-    "ideas-plantuml-language": "https://ideas-plantuml-module.herokuapp.com/ideas-plantuml-language",
+    "ideas-plantuml-language": "https://ideas-plantuml-module-prod.herokuapp.com/ideas-plantuml-language",
     "ideas-dockerfile-language": "http://localhost:8085/ideas-dockerfile-language"
   },
   "configurationFiles": {
